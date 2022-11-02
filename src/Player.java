@@ -104,5 +104,4 @@ public class Player {
         }
         return maze;
     }
-
 }

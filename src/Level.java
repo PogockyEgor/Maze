@@ -1,4 +1,3 @@
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -11,7 +10,7 @@ public class Level {
     private char[][] maze;
 
     public void setMaze(char[][] maze) {
-        this.maze=maze;
+        this.maze = maze;
     }
 
     public int getStartX() {
@@ -37,11 +36,12 @@ public class Level {
     public static char[][] fileToArray(String fileName) throws IOException {
         FileReader fileReader = new FileReader(fileName);
         char[] buff = new char[2000];
-        fileReader.read(buff);
+        int symbolsLength = fileReader.read(buff);
+        System.out.println(symbolsLength);
         int Y = 1;
         int countX = 0;
         int x = 0;
-        for (int i = 0; i < buff.length; i++) {
+        for (int i = 0; i < symbolsLength; i++) {
             if (buff[i] == '\n') {
                 Y++;
                 x = countX;
@@ -54,8 +54,8 @@ public class Level {
         for (int i = 0; i < b.length; i++) {
             b[i] = new StringBuilder("");
         }
-        for (int i = 1, j = 0; i < buff.length - 1; i++) {
-            if (!(buff[i - 1] == '\r' || buff[i - 1] == '\n' || (buff[i - 1]=='\u0000'))) {
+        for (int i = 1, j = 0; i <= symbolsLength; i++) {
+            if (!(buff[i - 1] == '\r' || buff[i - 1] == '\n' || (buff[i - 1] == '\u0000'))) {
                 b[j].append(buff[i - 1]);
             }
             if (i % x == 0) {
@@ -63,9 +63,9 @@ public class Level {
             }
         }
         char[][] fileMaze = new char[b.length][b[0].length()];
-        for (int i = 0; i<b.length; i++){
-            for (int j = 0; j<b[i].length(); j++){
-                fileMaze[i][j]=b[i].charAt(j);
+        for (int i = 0; i < b.length; i++) {
+            for (int j = 0; j < b[i].length(); j++) {
+                fileMaze[i][j] = b[i].charAt(j);
             }
         }
         for (char[] t : fileMaze) {
@@ -76,8 +76,9 @@ public class Level {
         }
         return fileMaze;
     }
+
     public Level(String fileName) throws IOException {
-        this.maze=Level.fileToArray(fileName);
+        this.maze = Level.fileToArray(fileName);
         for (int i = 0; i < maze.length; i++) {
             for (int j = 0; j < maze[i].length; j++) {
                 if (maze[i][j] == '\u2B55') {
@@ -91,6 +92,4 @@ public class Level {
             }
         }
     }
-
-
 }
