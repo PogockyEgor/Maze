@@ -1,15 +1,8 @@
-public class Main {
-    public static void main(String[] args) {
-        char[][] maze = {{'\u2B1B', '\u2B06', '\u2B1B', '\u2B1B', '\u2B1B', '\u2B1B', '\u2B1B', '\u2B1B' },
-        {'\u2B1C', '\u2B1C', '\u2B1B', '\u2B1C', '\u2B1C', '\u2B1C', '\u2B1C', '\u2B1B' },
-        {'\u2B1C', '\u2B1B', '\u2B1B', '\u2B1C', '\u2B1B', '\u2B1B', '\u2B1C', '\u2B1B' },
-        {'\u2B1C', '\u2B1C', '\u2B1B', '\u2B1C', '\u2B1C', '\u2B1B', '\u2B1C', '\u2B1C' },
-        {'\u2B1B', '\u2B1C', '\u2B1B', '\u2B1B', '\u2B1C', '\u2B1B', '\u2B1B', '\u2B1C' },
-        {'\u2B1B', '\u2B1C', '\u2B1C', '\u2B1C', '\u2B1C', '\u2B1B', '\u2B1B', '\u2B1C' },
-        {'\u2B1B', '\u2B1B', '\u2B1B', '\u2B1B', '\u2B1B', '\u2B1C', '\u2B1C', '\u2B1C' },
-        {'\u2B1B', '\u2B1B', '\u2B1B', '\u2B1B', '\u2B1B', '\u2B55', '\u2B1B', '\u2B1B' }};
+import java.io.*;
 
-        Level lvl1 = new Level(maze);
+public class Main {
+    public static void main(String[] args) throws IOException {
+        Level lvl1 = new Level("C:/Users/user/IdeaProjects/Maze/src/level1.txt");
         Player.play(lvl1);
     }
 }

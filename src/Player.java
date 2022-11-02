@@ -29,7 +29,7 @@ public class Player {
         while (!((playerX == lvl.getFinalX()) && (playerY == lvl.getFinalY()))) {
             for (char[] t : lvl.getMaze()) {
                 for (char r : t) {
-                    System.out.print(r + " ");
+                    System.out.print(r);
                 }
                 System.out.println();
             }
@@ -50,7 +50,7 @@ public class Player {
 
         for (char[] t : lvl.getMaze()) {
             for (char r : t) {
-                System.out.print(r + " ");
+                System.out.print(r + "");
             }
             System.out.println();
         }
