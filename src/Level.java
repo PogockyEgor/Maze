@@ -1,5 +1,7 @@
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Level {
 
@@ -33,11 +35,13 @@ public class Level {
         return maze;
     }
 
+    public static ArrayList<Level> levels = new ArrayList<>();
+
+
     public static char[][] fileToArray(String fileName) throws IOException {
         FileReader fileReader = new FileReader(fileName);
         char[] buff = new char[2000];
         int symbolsLength = fileReader.read(buff);
-        System.out.println(symbolsLength);
         int Y = 1;
         int countX = 0;
         int x = 0;
@@ -68,16 +72,11 @@ public class Level {
                 fileMaze[i][j] = b[i].charAt(j);
             }
         }
-        for (char[] t : fileMaze) {
-            for (char r : t) {
-                System.out.print(r + "");
-            }
-            System.out.println();
-        }
         return fileMaze;
     }
 
     public Level(String fileName) throws IOException {
+        levels.add(this);
         this.maze = Level.fileToArray(fileName);
         for (int i = 0; i < maze.length; i++) {
             for (int j = 0; j < maze[i].length; j++) {
