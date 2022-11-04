@@ -1,6 +1,3 @@
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Player {
@@ -22,28 +19,6 @@ public class Player {
 
     public static void setPlayerY(int y) {
         Player.playerY = y;
-    }
-
-    public static void chooseLevel(ArrayList levels) throws IOException {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Выберите уровень:");
-        boolean result = true;
-        do {
-            if (scanner.hasNextInt()) {
-                try {
-                    Player.play((Level) levels.get(scanner.nextInt() - 1));
-                    result = true;
-                } catch (IndexOutOfBoundsException e) {
-                    System.out.println("Неверные данные");
-                    result = false;
-                }
-            } else {
-                System.out.println("Неверный ввод");
-                scanner.next();
-                result = false;
-            }
-        }
-        while (!result);
     }
 
     public static void play(Level lvl) {
