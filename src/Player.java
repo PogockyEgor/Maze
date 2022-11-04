@@ -27,26 +27,20 @@ public class Player {
     public static void chooseLevel(ArrayList levels) throws IOException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Выберите уровень:");
-        int choose = 0;
         boolean result = true;
         do {
-            try {
-                choose = scanner.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Неверные данные");
-                result = false;
-            } finally {
-                switch (choose) {
-                    case 1 -> Player.play((Level) levels.get(0));
-                    case 2 -> Player.play((Level) levels.get(1));
-                    case 3 -> Player.play((Level) levels.get(2));
-                    case 4 -> Player.play((Level) levels.get(3));
-                    case 5 -> Player.play((Level) levels.get(4));
-                    default -> {
-                        result = false;
-                        System.out.println("Неверный ввод");
-                    }
+            if (scanner.hasNextInt()) {
+                try {
+                    Player.play((Level) levels.get(scanner.nextInt() - 1));
+                    result = true;
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("Неверные данные");
+                    result = false;
                 }
+            } else {
+                System.out.println("Неверный ввод");
+                scanner.next();
+                result = false;
             }
         }
         while (!result);
